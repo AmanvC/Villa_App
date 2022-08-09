@@ -1,0 +1,34 @@
+{% extends 'basic_app/basic_app_base.html' %}
+
+{% block body_block %}
+
+  <h2>The Villa details are as follows:</h2>
+  <ul>
+    <li>Villa Number: {{ villa.number }}</li>
+    <li>Block Number: {{ villa.block }}</li>
+  </ul>
+
+  <h2>The Owner details are as follows:</h2>
+  {% for owner in villa.owners.all %}
+    <ul>
+      <li>Owner Name: {{ owner.name }}</li>
+      <li>Owner Age: {{ owner.age }}</li>
+      <li>Mobile Number: {{ owner.mobile }}</li>
+    </ul>
+    <div class="container">
+      <a class='btn btn-warning' href="{% url 'basic_app:update_owner' pk=owner.pk %}">Update Owner</a>
+      <a class='btn btn-danger' href="{% url 'basic_app:delete_owner' pk=owner.pk %}">Delete Owner</a>
+    </div>
+
+
+  {% endfor %}
+
+  <br>
+  <p>Warning: If owner exists, do not create new owner, or it will overwrite previous owner and all details will be lost.</p>
+  <div class="container">
+    <a class='btn btn-success' href="{% url 'basic_app:create_owner' %}">Create Owner</a>
+    <a class='btn btn-secondary' href="{% url 'basic_app:list' %}">Return to Villa list</a>
+  </div>
+
+
+{% endblock %}

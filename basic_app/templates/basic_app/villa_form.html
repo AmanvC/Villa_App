@@ -1,0 +1,13 @@
+{% extends 'basic_app/basic_app_base.html' %}
+
+{% block body_block %}
+
+  <h1>Create Villa</h1>
+  <form class='mb-3' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class='btn btn-success' type="submit" name="" value="Create Villa">
+    <a class='btn btn-warning' href="{% url 'basic_app:list' %}">Return to Villa list</a>
+  </form>
+
+{% endblock %}

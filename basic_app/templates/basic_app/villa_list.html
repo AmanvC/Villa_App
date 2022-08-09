@@ -1,0 +1,16 @@
+{% extends 'basic_app/basic_app_base.html' %}
+
+{% block body_block %}
+
+  <h1>Here is the list of Villa's.</h1>
+  <h2>Click Villa number to know more details about owner.</h2>
+  <p>*To create owner, first create villa and then click on create owner</p>
+
+  <ol>
+    {% for villa in villas_list %}
+      <h3><li><a class="nav-link text-black" href="{{ villa.id }}">Villa: {{ villa.number }}</a></li></h3>
+    {% endfor %}
+  </ol>
+
+
+{% endblock %}

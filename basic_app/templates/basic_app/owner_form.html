@@ -1,0 +1,23 @@
+{% extends 'basic_app/basic_app_base.html' %}
+
+{% block body_block %}
+
+{% if not form.instance.pk %}
+  <h1>Create Owner</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class='btn btn-success' type="submit" name="" value="Create Owner">
+    <a class='btn btn-warning' href="{% url 'basic_app:list' %}">Return to Villa list</a>
+  </form>
+  {% else %}
+  <h1>Update Owner</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class='btn btn-success' type="submit" name="" value="Update Owner">
+    <a class='btn btn-warning' href="{% url 'basic_app:list' %}">Return to Villa list</a>
+  </form>
+{% endif %}
+
+{% endblock %}
